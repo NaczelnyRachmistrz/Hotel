@@ -7,7 +7,7 @@ public abstract class Recepcjonista {
 		this.nazwisko = nazwisko;
 	}
 	
-	public abstract Pokój zaproponujPokój(Pokój [] pokoje);
+	public abstract Pokój zaproponujPokój(Pokój [] pokoje, Ankieta ankieta);
 	public String dajImię() {
 		return imię;
 	}
