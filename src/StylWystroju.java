@@ -1,0 +1,4 @@
+
+public enum StylWystroju {
+	ORIENTALNY, NOWOCZESNY, SECESYJNY, MORSKI, RUSTYKALNY;
+}
