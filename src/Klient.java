@@ -17,12 +17,8 @@ public abstract class Klient {
 	public String dajNazwisko() {
 		return nazwisko;
 	}
-
-	public Ankieta dajAnkietę() {
-		return ankieta;
-	}
 	
-	public abstract boolean czyAkceptujesz(Pokój pokój);
+	public abstract boolean czyAkceptujesz(Pokój pokój, Ankieta ankieta);
 	
 	public String toString() {
 		return imię + " " + nazwisko + ", ";

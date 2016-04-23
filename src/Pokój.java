@@ -70,5 +70,17 @@ public class Pokój {
 	public boolean czyJestInternet() {
 		return dostepDoInternetu;
 	}
-		
+
+	public String toString() {
+		String ret =  "liczba osób - " + pojemność + ", cena - " + cena + ", styl" + styl + ", kolor - "
+				+ kolor + ", kierunekOkna - " + kierunekOkna + ", dostepDoInternetu -";
+		if (dostepDoInternetu) {
+			ret = ret + "tak;";
+		} else {
+			ret = ret + "nie;";
+		}
+		return ret;
+	}
+	
+	
 }

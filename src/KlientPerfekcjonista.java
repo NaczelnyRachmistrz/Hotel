@@ -5,7 +5,7 @@ public class KlientPerfekcjonista extends Klient {
 		super(imię, nazwisko, ankieta);
 	}
 
-	public boolean czyAkceptujesz(Pokój pokój) {
+	public boolean czyAkceptujesz(Pokój pokój, Ankieta ankieta) {
 		if (ankieta.spełnionePozycje(pokój) == 6) {
 			return true;
 		} else {

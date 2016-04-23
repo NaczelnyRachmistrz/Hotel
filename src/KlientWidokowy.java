@@ -4,7 +4,7 @@ public class KlientWidokowy extends Klient{
 	public KlientWidokowy(String imię, String nazwisko, Ankieta ankieta) {
 		super(imię, nazwisko, ankieta);
 	}
-	public boolean czyAkceptujesz(Pokój pokój) {
+	public boolean czyAkceptujesz(Pokój pokój, Ankieta ankieta) {
 		if (pokój.dajKierunekOkna() == ankieta.dajKierunekOkna()) {
 			return true;
 		} else {

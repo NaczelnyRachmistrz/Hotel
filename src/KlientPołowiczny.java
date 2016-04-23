@@ -5,7 +5,7 @@ public class KlientPołowiczny extends Klient{
 		super(imię, nazwisko, ankieta);
 	}
 	
-	public boolean czyAkceptujesz(Pokój pokój) {
+	public boolean czyAkceptujesz(Pokój pokój, Ankieta ankieta) {
 		if (ankieta.spełnionePozycje(pokój) >= 3) {
 			return true;
 		} else {

@@ -6,7 +6,6 @@ public class Hazardzista extends Recepcjonista {
 	}
 
 	public Pokój zaproponujPokój(Pokój [] pokój, Ankieta ankieta) {
-		
 		Pokój wybranyPokój;
 		Random los = new Random();
 		int n = los.nextInt();

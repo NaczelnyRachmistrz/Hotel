@@ -1,12 +1,11 @@
 
 public class Zamówienie {
 	private int licznik;
-	private Ankieta ankieta;
 	private Klient klient;
-	
-	public Zamówienie(Ankieta ankieta, Klient klient) {
-		this.ankieta = ankieta;
+	private Ankieta ankieta;
+	public Zamówienie(Klient klient, Ankieta ankieta) {
 		this.klient = klient;
+		this.ankieta = ankieta;
 	}
 
 	public int dajLicznik() {

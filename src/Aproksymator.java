@@ -11,9 +11,10 @@ public class Aproksymator extends Recepcjonista {
 		for (Pokój x: pokój) {
 			if (wybranyPokój == null) {
 				wybranyPokój = x;
+				maks = ankieta.spełnionePozycje(x);
 			} else {
 				pom = ankieta.spełnionePozycje(x);
-				if (pom < maks) {
+				if (pom > maks) {
 					maks = pom;
 					wybranyPokój = x;
 				} else {
@@ -22,7 +23,7 @@ public class Aproksymator extends Recepcjonista {
 							wybranyPokój = x;
 						} else {
 							if (x.dajCenę() == wybranyPokój.dajCenę()) {
-								wybranyPokój = wybranyPokój.dajNr() > x.dajNr() ? wybranyPokój:x;
+								wybranyPokój = wybranyPokój.dajNr() < x.dajNr() ? wybranyPokój:x;
 							}
 						}
 					}

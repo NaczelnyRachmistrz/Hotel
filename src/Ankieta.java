@@ -66,6 +66,16 @@ public class Ankieta {
 		return czyInternet;
 	}
 
+	public String toString() {
+		String ret =  "liczba osób - " + minPojemność + ", cena - " + maksCena + ", styl" + preferowanyStyl 
+				+ ", kolor - " + preferowanyKolor + ", okno - " + kierunekOkna + ", internet -";
+		if (czyInternet) {
+			ret = ret + "tak;";
+		} else {
+			ret = ret + "nie;";
+		}
+		return ret;
+	}
 	
 }
 

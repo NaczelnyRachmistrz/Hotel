@@ -5,8 +5,8 @@ public class KlientBudżetowy extends Klient{
 		super(imię, nazwisko, ankieta);
 	}
 
-	public boolean czyAkceptujesz(Pokój pokój) {
-		if (pokój.dajCenę() <= this.ankieta.dajMaksCenę()) {
+	public boolean czyAkceptujesz(Pokój pokój, Ankieta ankieta) {
+		if (pokój.dajCenę() <= ankieta.dajMaksCenę()) {
 			return true;
 		} else {
 			return false;

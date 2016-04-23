@@ -5,7 +5,7 @@ public class KlientUgodowy extends Klient {
 		super(imię, nazwisko, ankieta);
 	}
 
-	public boolean czyAkceptujesz(Pokój pokój) {
+	public boolean czyAkceptujesz(Pokój pokój, Ankieta ankieta) {
 		return true;
 	}
 	
