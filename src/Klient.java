@@ -2,12 +2,10 @@ public abstract class Klient {
 
 	String imię;
 	String nazwisko;
-	Ankieta ankieta;
 	
-	public Klient(String imię, String nazwisko, Ankieta ankieta) {
+	public Klient(String imię, String nazwisko) {
 		this.imię = imię;
 		this.nazwisko = nazwisko;
-		this.ankieta = ankieta;
 	}
 
 	public String dajImię() {

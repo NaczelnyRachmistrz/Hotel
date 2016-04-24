@@ -1,7 +1,5 @@
-import java.util.*;
-
 public class Ankieta {
-	private Calendar dataPrzyjazdu;
+	private KartkaKalendarza dataPrzyjazdu;
 	private int długośćPobytu;
 	private int maksCena;
 	private int minPojemność;
@@ -10,7 +8,7 @@ public class Ankieta {
 	private Kierunek kierunekOkna;
 	private boolean czyInternet;
 	
-	public Ankieta(Calendar dataPrzyjazdu, int dlugoscPobytu, int maksCena, int minPojemnosc, Kolor preferowanyKolor,
+	public Ankieta(KartkaKalendarza dataPrzyjazdu, int dlugoscPobytu, int maksCena, int minPojemnosc, Kolor preferowanyKolor,
 			StylWystroju preferowanyStyl, Kierunek kierunekOkna, boolean czyInternet) {
 		this.dataPrzyjazdu = dataPrzyjazdu;
 		this.długośćPobytu = dlugoscPobytu;
@@ -34,7 +32,7 @@ public class Ankieta {
 		return licznik;
 	}
 	
-	public Calendar dajDatęPrzyjazdu() {
+	public KartkaKalendarza dajDatęPrzyjazdu() {
 		return dataPrzyjazdu;
 	}
 
@@ -65,14 +63,47 @@ public class Ankieta {
 	public boolean czyJestInternet() {
 		return czyInternet;
 	}
-
+	
+	private String wypiszKierunek() {
+		switch (kierunekOkna) {
+		case ZACHÓD: return "zachód";
+		case WSCHÓD: return "wschód";
+		case PÓŁNOC: return "północ";
+		case POŁUDNIE: return "południe";
+		default: return "błąd";
+		}
+	}
+	
+	private String wypiszStyl() {
+		switch (preferowanyStyl) {
+		case RUSTYKALNY: return "rustykalny";
+		case MORSKI: return "morski";
+		case SECESYJNY: return "secesyjny";
+		case NOWOCZESNY: return "nowoczesny";
+		case ORIENTALNY: return "orientalny";
+		default: return "błąd";
+		}
+	}
+	
+	private String wypiszKolor() {
+		switch (preferowanyKolor) {
+		case SZARY: return "szary";
+		case MORSKI: return "morski";
+		case STALOWY: return "stalowy";
+		case PURPUROWY: return "purpurowy";
+		case JASNOZIELONY: return "jasnozielony";
+		case SELEDYNOWY: return "seledynowy";
+		default: return "błąd";
+		}		
+	}
+	
 	public String toString() {
-		String ret =  "liczba osób - " + minPojemność + ", cena - " + maksCena + ", styl" + preferowanyStyl 
-				+ ", kolor - " + preferowanyKolor + ", okno - " + kierunekOkna + ", internet -";
+		String ret =  "liczba osób - " + minPojemność + ", cena - " + maksCena + ", styl - " + wypiszStyl() 
+				+ ", kolor - " + wypiszKolor() + ", okno - " + wypiszKierunek() + ", Internet - ";
 		if (czyInternet) {
-			ret = ret + "tak;";
+			ret = ret + "tak.";
 		} else {
-			ret = ret + "nie;";
+			ret = ret + "nie.";
 		}
 		return ret;
 	}

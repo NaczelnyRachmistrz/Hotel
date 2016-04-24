@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Pokój {
-	TreeSet<Calendar> ZajęteTerminy;
+	TreeSet<KartkaKalendarza> ZajęteTerminy;
 	private int nr;
 	private int pojemność;
 	private int cena;
@@ -19,27 +19,35 @@ public class Pokój {
 		this.styl = styl;
 		this.kierunekOkna = kierunekOkna;
 		this.dostepDoInternetu = dostepDoInternetu;
-		ZajęteTerminy = new TreeSet<Calendar>();
+		ZajęteTerminy = new TreeSet<KartkaKalendarza>();
 	}
 
-	private boolean czyWolnaData(Calendar data) {
-		return (!ZajęteTerminy.contains(data));
+	private boolean czyZajętaData(KartkaKalendarza data) {
+		return ZajęteTerminy.contains(data);
 	}
 	
-	public boolean czyWolnyTermin(Calendar początek, int długośćPobytu) {
-		while(długośćPobytu-- > 0) {
-			 if (!czyWolnaData(początek)) {
+	public boolean czyWolnyTermin(KartkaKalendarza początek, int długośćPobytu) {
+		Calendar pom;
+		while(długośćPobytu > 0) {
+			 if (czyZajętaData(początek)) {
 				 return false;
 			 }
-			 początek.add(Calendar.DAY_OF_MONTH, 1);
+			 pom = (Calendar) początek.dajDzień().clone();
+			 pom.add(Calendar.DAY_OF_MONTH, 1);
+			 początek = new KartkaKalendarza(pom);
+			 długośćPobytu--;
 		}
 		return true;
 	}
 	
-	public void dodajRezerwację(Calendar początek, int długośćPobytu) {
-		while(długośćPobytu-- > 0) {
+	public void dodajRezerwację(KartkaKalendarza początek, int długośćPobytu) {
+		Calendar pom = Calendar.getInstance();
+		while(długośćPobytu > 0) {
 			ZajęteTerminy.add(początek);
-			początek.add(Calendar.DAY_OF_MONTH, 1);
+			pom = (Calendar) początek.dajDzień().clone();
+			pom.add(Calendar.DAY_OF_MONTH, 1);
+			początek = new KartkaKalendarza(pom);
+			długośćPobytu--;
 		}
 	}
 	
@@ -71,13 +79,46 @@ public class Pokój {
 		return dostepDoInternetu;
 	}
 
+	private String wypiszKierunek() {
+		switch (kierunekOkna) {
+		case ZACHÓD: return "zachód";
+		case WSCHÓD: return "wschód";
+		case PÓŁNOC: return "północ";
+		case POŁUDNIE: return "południe";
+		default: return "błąd";
+		}
+	}
+	
+	private String wypiszStyl() {
+		switch (styl) {
+		case RUSTYKALNY: return "rustykalny";
+		case MORSKI: return "morski";
+		case SECESYJNY: return "secesyjny";
+		case NOWOCZESNY: return "nowoczesny";
+		case ORIENTALNY: return "orientalny";
+		default: return "błąd";
+		}
+	}
+	
+	private String wypiszKolor() {
+		switch (kolor) {
+		case SZARY: return "szary";
+		case MORSKI: return "morski";
+		case STALOWY: return "stalowy";
+		case PURPUROWY: return "purpurowy";
+		case JASNOZIELONY: return "jasnozielony";
+		case SELEDYNOWY: return "seledynowy";
+		default: return "błąd";
+		}		
+	}	
+	
 	public String toString() {
-		String ret =  "liczba osób - " + pojemność + ", cena - " + cena + ", styl" + styl + ", kolor - "
-				+ kolor + ", kierunekOkna - " + kierunekOkna + ", dostepDoInternetu -";
+		String ret =  "liczba osób - " + pojemność + ", cena - " + cena + ", styl - " + wypiszStyl() + ", kolor - "
+				+ wypiszKolor() + ", okno - " + wypiszKierunek() + ", Internet - ";
 		if (dostepDoInternetu) {
-			ret = ret + "tak;";
+			ret = ret + "tak.";
 		} else {
-			ret = ret + "nie;";
+			ret = ret + "nie.";
 		}
 		return ret;
 	}

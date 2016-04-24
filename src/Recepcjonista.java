@@ -23,7 +23,8 @@ public abstract class Recepcjonista {
 		Pokój [] wolnePokoje = new Pokój [ileWolnychPokojów(pokoje, ankieta)];
 		for (Pokój x: pokoje) {
 			if (x.czyWolnyTermin(ankieta.dajDatęPrzyjazdu(), ankieta.dajDługośćPobytu())) {
-				wolnePokoje[iter++] = x;
+				wolnePokoje[iter] = x;
+				iter++;
 			}
 		}
 		return wolnePokoje;

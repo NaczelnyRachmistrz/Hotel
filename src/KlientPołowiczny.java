@@ -1,8 +1,8 @@
 
 public class KlientPołowiczny extends Klient{
 
-	public KlientPołowiczny(String imię, String nazwisko, Ankieta ankieta) {
-		super(imię, nazwisko, ankieta);
+	public KlientPołowiczny(String imię, String nazwisko) {
+		super(imię, nazwisko);
 	}
 	
 	public boolean czyAkceptujesz(Pokój pokój, Ankieta ankieta) {

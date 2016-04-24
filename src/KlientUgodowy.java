@@ -1,8 +1,8 @@
 
 public class KlientUgodowy extends Klient {
 	
-	public KlientUgodowy(String imię, String nazwisko, Ankieta ankieta) {
-		super(imię, nazwisko, ankieta);
+	public KlientUgodowy(String imię, String nazwisko) {
+		super(imię, nazwisko);
 	}
 
 	public boolean czyAkceptujesz(Pokój pokój, Ankieta ankieta) {
