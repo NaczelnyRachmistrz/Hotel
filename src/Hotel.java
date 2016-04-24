@@ -7,7 +7,7 @@ public class Hotel {
 		this.recepcjoniści = recepcjoniści;
 	}
 	
-	public Zamówienie przyjmijZamówienie(Klient klient, Ankieta ankieta) {
+	public static Zamówienie przyjmijZamówienie(Klient klient, Ankieta ankieta) {
 		return new Zamówienie(klient, ankieta);
 	}
 	
@@ -110,7 +110,7 @@ public class Hotel {
 
 	public static void main(String args[]) {
 		
-		//Testy - deklaracja kilku obiektów każdej klasy
+		//Testy - sprawdzam metodę akceptuj dla 7 zamówień, pięciopokojowego hotelu i 5 recepcjonistow;
 		Recepcjonista [] recepcjonista = new Recepcjonista[5];
 		recepcjonista[0] = new Hazardzista("Jan", "Kowalski");
 		recepcjonista[1] = new Aproksymator("Jan", "Nowak");
@@ -183,7 +183,8 @@ public class Hotel {
 			StylWystroju.RUSTYKALNY, Kierunek.PÓŁNOC, true);
 		klient[6] = new KlientPołowiczny("Janusz", "Kowal");
 		zamówienie[6] = new Zamówienie(klient[6], ankieta[6]);
-	/*	pokój[0].dodajRezerwację(kalendarz[0], 10);
+	/* Parę wywołań metod, które pozwoliły mi wychwycić proste błędy
+	 *  pokój[0].dodajRezerwację(kalendarz[0], 10);
 		kalendarz[1].set(2016, 8, 15);
 		System.out.println(pokój[0].czyWolnyTermin(kalendarz[1], 10));
 		System.out.println(klient[0].toString());
@@ -191,5 +192,21 @@ public class Hotel {
 		System.out.println(ankieta[0].toString());
 		System.out.println(zamówienie[0].dajAnkietę().toString());*/
 		hotel1.akceptuj(zamówienie, hotel1.dajPokoje(), hotel1.dajRecepcjonistów());
+	/*  Test metody przyjmijZamówienie */
+		Zamówienie zamówienie2;
+		zamówienie2 = Hotel.przyjmijZamówienie(klient[0], ankieta[0]);
+		System.out.println(zamówienie2.dajAnkietę().toString());
+		System.out.println(zamówienie2.dajKlienta().toString());
+	/* Test, czy program prawidłowo wychwytuje nieprawidłową listę pokojów i/lub recepcjonistów */
+		Recepcjonista [] recep = new Recepcjonista[2];
+		recep[0] = new Hazardzista("Jan", "Kowalewski");
+		recep[1] = new Perfekcjonista("Maria", "Nowak");
+		hotel1.akceptuj(zamówienie, hotel1.dajPokoje(), recep);
+		Pokój [] pok = new Pokój[2];
+		pok[0] = new Pokój(5, 4, 200, Kolor.JASNOZIELONY, StylWystroju.RUSTYKALNY,
+				Kierunek.PÓŁNOC, true);
+		pok[1] = new Pokój(7, 6, 300, Kolor.PURPUROWY, StylWystroju.ORIENTALNY,
+				Kierunek.POŁUDNIE, false);
+		hotel1.akceptuj(zamówienie, pok, hotel1.dajRecepcjonistów());
 	}
 }

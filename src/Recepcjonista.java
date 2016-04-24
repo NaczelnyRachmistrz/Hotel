@@ -30,6 +30,7 @@ public abstract class Recepcjonista {
 		return wolnePokoje;
 	}
 	public abstract Pokój zaproponujPokój(Pokój [] pokoje, Ankieta ankieta);
+	
 	public String dajImię() {
 		return imię;
 	}

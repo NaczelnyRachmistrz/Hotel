@@ -44,26 +44,10 @@ public class Ankieta {
 		return maksCena;
 	}
 
-	public int dajMinPojemność() {
-		return minPojemność;
-	}
-
-	public Kolor dajPreferowanyKolor() {
-		return preferowanyKolor;
-	}
-
-	public StylWystroju dajPreferowanyStyl() {
-		return preferowanyStyl;
-	}
-
 	public Kierunek dajKierunekOkna() {
 		return kierunekOkna;
 	}
 
-	public boolean czyJestInternet() {
-		return czyInternet;
-	}
-	
 	private String wypiszKierunek() {
 		switch (kierunekOkna) {
 		case ZACHÓD: return "zachód";

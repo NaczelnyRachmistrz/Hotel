@@ -1,3 +1,5 @@
+/* Klasa, reprezentująca kartkę z kalendarza - "oczyszczona" z niepotrzebnych pól klasa Calendar */
+
 import java.util.*;
 public class KartkaKalendarza implements Comparable<KartkaKalendarza>{
 	

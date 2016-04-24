@@ -8,14 +8,6 @@ public abstract class Klient {
 		this.nazwisko = nazwisko;
 	}
 
-	public String dajImię() {
-		return imię;
-	}
-
-	public String dajNazwisko() {
-		return nazwisko;
-	}
-	
 	public abstract boolean czyAkceptujesz(Pokój pokój, Ankieta ankieta);
 	
 	public String toString() {
